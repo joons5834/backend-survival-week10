@@ -9,12 +9,14 @@ import kr.megaptera.backendsurvivalweek10.dtos.ChangeCartLineItemDto;
 import kr.megaptera.backendsurvivalweek10.models.LineItemId;
 import kr.megaptera.backendsurvivalweek10.models.ProductId;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("cart-line-items")
+@Secured({"ROLE_USER", "ROLE_ADMIN"})
 public class LineItemController {
     private final GetCartService getCartService;
     private final AddProductToCartService addProductToCartService;
